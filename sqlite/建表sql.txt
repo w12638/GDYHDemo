@@ -1,0 +1,32 @@
+CREATE TABLE Plist(
+APP_ID                varchar(50)    PRIMARY KEY     NOT NULL,
+DOWNLOAD_URL          varchar(100)   NOT NULL,
+APP_URL               varchar(100)   NOT NULL,
+ICON_URL              varchar(100)   NOT NULL,
+DISPLAY_IMAGE_URL     varchar(100)   NOT NULL,
+BUNDLE_ID             varchar(50)    NOT NULL,
+VERSION               varchar(50)    NOT NULL,
+NAME                  varchar(20)    NOT NULL
+);
+
+INSERT INTO Plist (APP_ID,DOWNLOAD_URL,APP_URL,ICON_URL,DISPLAY_IMAGE_URL,BUNDLE_ID,VERSION,NAME) VALUES ('0001', 'www.kensini.com','www.wanshini.com','www.aaaa.com','www.hdsuahsda.com','112233','v1.0','wjjsi.app' );
+
+CREATE TABLE User(
+User_ID           varchar(50)    PRIMARY KEY     NOT NULL,
+PASSWORD          varchar(20)   NOT NULL,
+NAME              varchar(20)    NOT NULL
+);
+
+INSERT INTO User (User_ID,NAME,PASSWORD) VALUES ('0001', 'w12638','112233' );
+
+CREATE TABLE App(
+APP_ID        varchar(50)    PRIMARY KEY     NOT NULL,
+USER_ID       varchar(100)   NOT NULL,
+name          varchar(20)   NOT NULL,
+version       varchar(20)   NOT NULL,
+plateform     varchar(1)   NOT NULL,
+packType      varchar(1)    NOT NULL,
+desc          varchar(100)
+);
+
+INSERT INTO User (APP_ID,USER_ID,name,version,plateform,packType,desc) VALUES ('0001', 'w12638','sunxy','v1.2','1','1','ssss');
