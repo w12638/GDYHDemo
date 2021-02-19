@@ -30,32 +30,3 @@ desc          varchar(100)
 );
 
 INSERT INTO User (APP_ID,USER_ID,name,version,plateform,packType,desc) VALUES ('0001', 'w12638','sunxy','v1.2','1','1','ssss');
-
-CREATE TABLE T_USER(
-USER_CODE           varchar(20)    PRIMARY KEY     NOT NULL,
-PASSWORD          varchar(20)   NOT NULL,
-USER_NAME          varchar(20)   NOT NULL,
-ACTIVEFLAG          varchar(1)   NOT NULL,
-LOGINTIME          varchar(20)   NOT NULL,
-CREATTIME              varchar(20)    NOT NULL
-);
-
-CREATE TABLE T_APPINFO(
-APP_ID            varchar(50)    PRIMARY KEY     NOT NULL,
-USER_ID           varchar(50)   NOT NULL,
-APP_NAME          varchar(20)   NOT NULL,
-APP_VERSION       varchar(20)   NOT NULL,
-APP_SIZE          varchar(20)    NOT NULL,
-APP_COSURL        varchar(100)   NOT NULL,
-APP_TYPE          varchar(1)   NOT NULL,
-APP_VERIFY        varchar(1)   NOT NULL,
-FIELDID           varchar(1)   NOT NULL,
-FIELDNAME         varchar(20)    NOT NULL,
-FILEPWD           varchar(4)    NOT NULL,
-BUILDVERSION      varchar(10)    NOT NULL,
-UPDATELOG       varchar(100)    NOT NULL,
-ACTIVEFLAG      varchar(1)    NOT NULL,
-UPDATETIME      varchar(20)    NOT NULL,
-DOWNCOUNT       varchar(4)    NOT NULL,
-DESC            varchar(100)    NOT NULL
-);
