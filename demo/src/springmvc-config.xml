@@ -30,6 +30,16 @@
         <property name="prefix" value="/WEB-INF/context/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-    
-    
+    <!--- StringHttpMessageConverter bean -->
+    <bean id = "stringHttpMessageConverter" class = "org.springframework.http.converter.StringHttpMessageConverter"/>
+    <bean id = "mappingJacksonHttpMessageConverter" class = "org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+	<bean class ="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >
+	       <property name= "messageConverters" >
+	             <list>
+	                 <ref bean= "stringHttpMessageConverter" />
+	                 <ref bean= "mappingJacksonHttpMessageConverter" />          
+	                 
+	             </list>
+	        </property>
+	</bean>
 </beans>
