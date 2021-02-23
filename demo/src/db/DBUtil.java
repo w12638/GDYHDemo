@@ -31,7 +31,7 @@ public class DBUtil {
 		Connection c = DriverManager.getConnection(url);
 		Statement stmt = ((java.sql.Connection) c).createStatement();
 		ResultSet rs = stmt.executeQuery( sql);
-		rs.getString(data);
+		res = rs.getString(data);
 		rs.close();
 		stmt.close();
         c.close();
@@ -58,10 +58,25 @@ public class DBUtil {
 		while (rs.next()) { //rowData = new HashMap(columnCount);
 		Map rowData = new HashMap();
 			for (int i = 1; i <= columnCount; i++) {
-				rowData.put(md.getColumnName(i), rs.getObject(i));
+				rowData.put(initialToCapital(md.getColumnName(i)), rs.getObject(i));
 			}
 			list.add(rowData);
 		} 
 		return list;
+	}
+	public static String initialToCapital(String s) {
+		StringBuilder sb = new StringBuilder();
+		if (s == null || s.trim().isEmpty()) {
+			return sb.toString();
+		}
+		if (s.length() <= 1) {
+			return sb.append(s).toString().toUpperCase();
+		}
+		String[] split = s.split("_");
+		for (String string : split) {
+			sb.append(string.substring(0, 1).toUpperCase());
+			sb.append(string.substring(1).toLowerCase());
+		}
+		return sb.toString();
 	}
 }
