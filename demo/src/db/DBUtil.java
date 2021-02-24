@@ -13,7 +13,7 @@ import java.util.List;
 
 
 public class DBUtil {
-	private static String url =  "jdbc:sqlite:D:\\用户目录\\下载\\sqlite-dll-win64-x64-3340100\\app.db";
+	private static String url =  "jdbc:sqlite:D:\\wjcsptGit\\GDYHDemo\\sqlite\\app.db";
 	//增删改sql
 	public static  void operationSql(String sql) throws ClassNotFoundException, SQLException{
 		Class.forName("org.sqlite.JDBC");

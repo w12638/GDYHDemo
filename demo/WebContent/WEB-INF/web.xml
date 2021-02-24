@@ -37,5 +37,8 @@
         <servlet-name>spring</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
+    <listener>
+    	<listener-class>mySession.SessionListener</listener-class>
+    </listener>
   
 </web-app>

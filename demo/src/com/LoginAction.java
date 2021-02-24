@@ -4,34 +4,28 @@ package com;
 
 
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-
-
-
-
-
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import db.DBUtil;
-@CrossOrigin(origins = "*", maxAge = 3600)
-@Controller
+import entities.DataReturn;
+import entities.User;
+//@CrossOrigin(origins = "*", maxAge = 3600)
+@RestController
 
 public class LoginAction {
 
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
-	public void login(@RequestBody Map map, HttpServletRequest request,HttpServletResponse response) throws IOException {
-		String resultString="";
-		String errorres="{\"code\":\"err0000\",\"message\":\"Fail\",\"data\":\"\"}";
+	public DataReturn login(@RequestBody Map map, HttpServletRequest request,HttpServletResponse response) throws IOException {
 		System.out.println(map.toString());
 		try{
 			String name = (String) map.get("name");
@@ -40,24 +34,22 @@ public class LoginAction {
 			String sessionid = session.getId();
 			String sql = "SELECT PASSWORD FROM T_user where USER_NAME = '"+name+"';";
 	        String pd  = DBUtil.selectSql(sql, "PASSWORD");  
-	        resultString="{\"code\":\"000000\",\"message\":\"SUCCESS\",\"data\":{\"sessionid\":\""+sessionid+"\"}}";
 	        
 	        if(!pd.isEmpty()&&password.equals(pd)){
 	        	User user= new User(name, password);
 		        session.setAttribute("user", user);
-	        	response.setContentType("application/json");
-	            response.getWriter().write(resultString);
+		        Map<String,Object> linkedHashMap = new LinkedHashMap<String, Object>();
+		        linkedHashMap.put("sessionid", sessionid);
+		        return new DataReturn("登录成功!",linkedHashMap);
 	        }else{
-	        	response.setContentType("application/json");
-	            response.getWriter().write(errorres);
+	        	return new DataReturn("111111","请输入用户名和密码!",null);
 	        }
 	        
 		}catch(Exception e){
-			response.setContentType("application/json");
-            response.getWriter().write(errorres);
+            return new DataReturn("111111","请登录失败!",null);
 		}
 		
 	}
-
+	
 	
 }

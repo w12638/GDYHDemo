@@ -1,4 +1,4 @@
-package com;
+package entities;
 
 public class User {
 	public User (String userId,String password){
