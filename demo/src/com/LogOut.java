@@ -12,11 +12,11 @@ import mySession.MySessionContext;
 @RestController
 @RequestMapping("/kaifapingtai")
 public class LogOut {
-	@GetMapping("/Logout.do")
+	@GetMapping("/logout.do")
 	public DataReturn logout(HttpServletRequest request) {
 		MySessionContext.DelSession(MySessionContext.getSession(request.getHeader("sessionId")));
-		return new DataReturn("退出成功！",null);
-		
+		return new DataReturn("退出成功！", null);
+
 	}
 
 }

@@ -4,10 +4,10 @@ package entities;
  * @author user
  *
  */
-public class DataReturn {
+public class DataReturn<T> {
     private String code;
     private String message;
-    private Object data;
+    private T data;
     
     public String getCode() {
 		return code;
@@ -29,18 +29,22 @@ public class DataReturn {
 		return data;
 	}
 
-	public void setData(Object data) {
+	public void setData(T data) {
 		this.data = data;
 	}
 	
-	public DataReturn(String code, String message,Object data){
+	public DataReturn(){
+		
+    }
+	
+	public DataReturn(String code, String message,T data){
 		this.code = code;
 		this.message = message;
 		this.data = data;
     }
 
-	public DataReturn( String message,Object data){
-        this("0000",message,data);
+	public DataReturn( String message,T data){
+        this("000000",message,data);
     }
 
 }

@@ -43,6 +43,11 @@
 	             </list>
 	        </property>
 	</bean>
+	<!-- 配置application.properties的读取 -->
+	<bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="fileEncoding" value="UTF-8" />
+        <property name="location" value="WEB-INF/conf/application.properties" />
+    </bean> 
 	
 	<!-- 配置拦截器 -->
     <mvc:interceptors>

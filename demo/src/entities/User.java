@@ -1,30 +1,32 @@
 package entities;
 
 public class User {
-	public User (String userId,String password){
-		this.userId =userId;
-	//	this.name =name;
-		this.password =password;
+	public User() {
+
 	}
-private String userId;
-private String name;
-private String password;
-public String getUserId() {
-	return userId;
-}
-public void setUserId(String userId) {
-	this.userId = userId;
-}
-public String getName() {
-	return name;
-}
-public void setName(String name) {
-	this.name = name;
-}
-public String getPassword() {
-	return password;
-}
-public void setPassword(String password) {
-	this.password = password;
-}
+
+	public User(String userCode, String name) {
+		this.userCode = userCode;
+		this.name = name;
+	}
+
+	private String userCode;
+	private String name;
+
+	public String getUserCode() {
+		return userCode;
+	}
+
+	public void setUserCode(String userCode) {
+		this.userCode = userCode;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }
